@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <!-- Page Content goes here -->
+    <ul id="slide-out" class="side-nav">
+        <li>
+            <div class="filter " data-filter="all">
+                      <a href="#!">Show All</a>
+            </div>
+        </li>
+        <li>
+            <div class="filter " data-filter=".category_1">
+                      <a href="#!">Reagente</a>
+            </div>
+        </li>
+        <li>
+            <div class="filter " data-filter=".category_2">
+                      <a href="#!">Equipamento</a>
+            </div>
+        </li>
+        <li>
+            <div class="sort " data-sort="myorder:desc">
+                      <a href="#!">Mais recentes</a>
+            </div>
+        </li>
+        <li>
+            <div class="sort " data-sort="myorder:asc">
+                      <a href="#!">Mais antigos</a>
+            </div>
+        </li>
+        <li>
+            <form action="#">
+                <p class="range-field">
+                    <input type="range" id="test5" min="0" max="100" />
+                </p>
+            </form>
+        </li>
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse btn light-green accent-4 z-depth-1">Filtragem<i class="mdi-navigation-menu left"></i></a>
+
+
+
+<div id="Container">
+{% for x in mylist%}
+<div class="mix category-2" data-myorder="{{ x['trade_id'] }}">
+    <div class="card ">
+        <div class="card-image waves-effect waves-block waves-light">
+        </div>
+        <div class="card-content">
+            <img class="activator" src="http://www.sigmaaldrich.com/content/dam/sigma-aldrich/product5/137/z558575.tif/_jcr_content/renditions/z558575-medium.jpg">
+
+          <span class="card-title activator grey-text text-darken-4 "><h6>{{ x['produto'] }}</h6><i class="material-icons right">more_vert</i></span>
+          <p><a href="#">{{ x['usuario_nome'] }}</a>
+                      <img  width="25" src="http://www.iconsdb.com/icons/preview/orange/star-8-xxl.png">
+                        <img width="25" src="http://www.iconsdb.com/icons/preview/orange/star-8-xxl.png">
+                        <img width="25" src="http://www.iconsdb.com/icons/preview/orange/star-8-xxl.png">
+                        <img width="25" src="http://www.iconsdb.com/icons/preview/orange/star-8-xxl.png">
+                        <img style="opacity: .2" width="25" src="http://www.iconsdb.com/icons/preview/orange/star-8-xxl.png">
+          </p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Troca: {{ x['produto'] }}<i class="material-icons right">close</i></span>
+          <p>{{ x['usuario_nome'] }} pretende trocar {{ x['quantidade'] }} unidades de {{ x['produto'] }}</p>
+
+            <div class="waves-effect waves-light btn-large red center">
+                Ver mais e Negociar
+            </div>
+            <p>Data de criação: {{ x['data_anuncio'] }}</p>
+
+        </div>
+      </div></div>
+    {% endfor %}
+</div>
+{% endblock %}

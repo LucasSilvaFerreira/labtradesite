@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title></title>
+    <div class="row">
+                      <div class=" col s2 container  ">
+
+        !
+
+
+    </div>
+      <nav class="col s8 white ">
+        <div class="nav-wrapper white">
+          <a href="#" class="brand-logo ">
+              <img width="60px" src="http://reacaonet.com.br/pt/images/Communities__Networks-512.png">
+          </a>
+            <a href="#" class="brand-logo grey-text text-lighten-1 center" href="sass.html"></a>
+
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><img class="responsive-img" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRAnDYYJnPrmD0kX-CbKrK76esm_4XRHWOu1di5SM5PWYA0y20GMEk-rA">
+</li>
+
+
+
+            <li><a class="black-text" href="/">Home</a></li>
+            <li><a class="black-text" href="/trocas">Trocar</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a class="black-text" href="/cadastrar_troca">Nova troca</a></li>
+                <li><a class="black-text" href="/logout">Logout</a></li>
+
+            {% else %}
+              <li><a class="black-text" href="/login">Login</a></li>
+              <li><a class="black-text" href="/register">Register</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+
+
+                  <div class=" col s2 container  ">
+
+         !
+
+    </div>
+
+    </div>
+<div class="row" >
+    <div style="height: 150px" class="col s12 blue lighten-2 ">
+
+    </div>
+
+</div>
+
+</head>
+<body>
+
+    <style>
+        #Container .mix{
+            display: none;
+        }
+
+        .titulo_card{
+            font-size: 12px
+        ;
+        }
+    </style>
+
+
+<div class="row">
+    <div class=" col s2 container ">
+
+        <span class="flot-text white-text">nessa parte colocarei banners e propagandas </span>
+
+    </div>
+    <div class="col s8 container grey lighten-4">
+
+    {% block content %}{% endblock %}
+    </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+                <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+
+                <script>// On document ready:
+
+                        $(function(){
+
+                            // Instantiate MixItUp:
+
+                            $('#Container').mixItUp();
+
+                        });
+                </script>
+
+
+                <!-- Compiled and minified CSS -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css">
+                <!-- Compiled and minified JavaScript -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
+                <script>// On document ready:
+                          // Initialize collapse button
+                          $(".button-collapse").sideNav();
+                          // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+                          //$('.collapsible').collapsible();
+
+                            $('.button-collapse').sideNav({
+                              edge: 'left', // Choose the horizontal origin
+                              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                            }
+                          );
+
+
+                          // Show sideNav
+                          $('.button-collapse').sideNav('show');
+                          // Hide sideNav
+                          $('.button-collapse').sideNav('hide');
+
+
+                </script>
+                <div class=" col s2 container ">
+
+        nessa parte colocarei banners e propagandas
+
+    </div>
+
+</div>
+</body>
+</html>

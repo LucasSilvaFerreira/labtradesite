@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+
+
+
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+  <form action="/cadastrar_troca" method="post">
+      <p>
+          Nome do produto:<br>{{ form.produto(size=80) }}<br>
+      </p>
+      <p>
+          Quantidade para a troca:<br>{{ form.quantidade(size=20) }}<br>
+      </p>
+
+
+
+
+      <p>
+          <input type="submit" value="Quero trocar!">
+      </p>
+  </form>
+
+    <form action="#" method="post" enctype=multipart/form-data>
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>File</span>
+                <input type="file" name="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+          <input type="button" value="Upload" onclick="this.form.submit();" />
+             {% if figura_upload %}
+                 <div class="row">
+
+                          <div class="col s4 offset-s4">
+                            <!-- Promo Content 2 goes here -->
+
+
+                                <img  class="materialboxed" width="200" height="200" src="{{ figura_upload }}" > </img>
+
+
+
+                        </div>
+
+            </div>
+             {%  endif %}
+
+
+
+  </form>
+
+</form>
+{% endblock %}
