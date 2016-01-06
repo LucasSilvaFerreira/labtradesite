@@ -37,6 +37,7 @@ class Troca(db.Model):
     produto = db.Column(db.String)
     usuario_nome = db.Column(db.String)
     quantidade = db.Column(db.Integer)
+    descricao = db.Column(db.String)
     foto_produto = db.Column(db.String)
     data_anuncio = db.Column(db.String)
 
@@ -72,7 +73,24 @@ def secret():
 
 @app.route('/')
 def index():
+
+
     return render_template('index.html')
+
+
+@app.route('/anuncio_add', methods=['GET', 'POST'])
+def anuncio_add():
+
+     if request.method == 'POST' and request.files['file']:
+        file = request.files['file']
+        filename = file.filename
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        flash("Foto selecionada")
+        return render_template('anuncio.html', figura_upload= 'static/produtos_figuras/' +filename)
+
+     if request.method == 'GET' :
+            flash("Nao utilizar foto...")
+            return render_template('anuncio.html')
 
 
 
@@ -82,15 +100,16 @@ def cadastrar_troca():
     form = Registrar_nova_troca(request.form)
     for x in form:
         print x.data
-    if request.method == 'POST':
-        file = request.files['file']
-        filename = file.filename
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        flash("Foto selecionada")
-        return render_template('nova_troca.html', form=form, figura_upload= 'static/produtos_figuras/' +filename)
+    # if request.method == 'POST' and request.files['file']:
+    #     file = request.files['file']
+    #     filename = file.filename
+    #     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    #     flash("Foto selecionada")
+    #     return render_template('nova_troca.html', form=form, figura_upload= 'static/produtos_figuras/' +filename)
 
 
     if request.method == 'POST' and form.validate():
+
 
 
         troca = Troca(

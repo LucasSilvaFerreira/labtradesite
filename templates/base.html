@@ -29,20 +29,19 @@
             <a href="#" class="brand-logo grey-text text-lighten-1 center" href="sass.html"></a>
 
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><img class="responsive-img" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRAnDYYJnPrmD0kX-CbKrK76esm_4XRHWOu1di5SM5PWYA0y20GMEk-rA">
-</li>
 
 
 
-            <li><a class="black-text" href="/">Home</a></li>
-            <li><a class="black-text" href="/trocas">Trocar</a></li>
+
+            <li><a class="black-text" href="/">HOME</a></li>
+            <li><a class="black-text" href="/trocas">TROCAR</a></li>
             {% if current_user.is_authenticated %}
-                <li><a class="black-text" href="/cadastrar_troca">Nova troca</a></li>
-                <li><a class="black-text" href="/logout">Logout</a></li>
+                <li><a class="black-text" href="/cadastrar_troca">NOVA TROCA</a></li>
+                <li><a class="black-text" href="/logout">LOGOUT</a></li>
 
             {% else %}
-              <li><a class="black-text" href="/login">Login</a></li>
-              <li><a class="black-text" href="/register">Register</a></li>
+              <li><a class="black-text" href="/login">LOGIN</a></li>
+              <li><a class="black-text" href="/register">REGISTRAR</a></li>
             {% endif %}
           </ul>
         </div>
@@ -64,7 +63,7 @@
 </div>
 
 </head>
-<body>
+<body class=" grey lighten-3 ">
 
     <style>
         #Container .mix{
@@ -84,7 +83,7 @@
         <span class="flot-text white-text">nessa parte colocarei banners e propagandas </span>
 
     </div>
-    <div class="col s8 container grey lighten-4">
+    <div class="col s8 container">
 
     {% block content %}{% endblock %}
     </div>

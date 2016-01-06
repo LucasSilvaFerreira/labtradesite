@@ -12,7 +12,11 @@
 {% endwith %}
 
 
+
+
   <form action="/cadastrar_troca" method="post">
+
+
       <p>
           Nome do produto:<br>{{ form.produto(size=80) }}<br>
       </p>
@@ -20,6 +24,17 @@
           Quantidade para a troca:<br>{{ form.quantidade(size=20) }}<br>
       </p>
 
+
+         <p>
+          Descreva seu produto:<br>{{form.descricao(size=10000)}}<br>
+        </p>
+
+
+          <p>
+              <input type="checkbox" id="vencimento_box" onclick="mostrar_box()" />
+              <label for="vencimento_box">Produto possui validade?</label>
+              <input style="visibility:hidden" id="data_picker" type="date" class=" datepicker">
+          </p>
 
 
 
@@ -60,4 +75,31 @@
   </form>
 
 </form>
+
+    <script>
+
+    function mostrar_box() {
+        if (document.getElementById("data_picker").style.visibility != "visible") {
+        document.getElementById("data_picker").style.visibility = "visible";
+        }else{
+            document.getElementById("data_picker").style.visibility = "hidden";
+
+        }
+
+
+
+}
+
+
+    </script>
+
+
+           <script>
+
+     $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+
+    </script>
 {% endblock %}

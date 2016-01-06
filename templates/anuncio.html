@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div style="padding: 10px;margin: 10px;margin-bottom: 0px;" class=" green blue-text col s12 fluid-text"></div>
+
+        <span style="padding: 20px;margin: 10px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" white blue-text col s12 fluid-text"><h5> Tubo falcon (plastico solúvel)</h5></span>
+
+        <div style=" padding-top:15px; margin: 10px; height: 300px; width: 250px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" white col s4" >
+
+            {%  if figura_upload %}
+
+            <img class = "materialboxed" width="230px" height="210px" src="{{ figura_upload }}">
+            {% else %}
+                        <img class = "materialboxed" width="230px" height="210px" src="http://findicons.com/files/icons/1168/simplexity_file/256/upload.png">
+
+            {% endif %}
+            <form action="#" method="post" enctype=multipart/form-data>
+                    <div class="file-field input-field ">
+                      <div class="btn  red accent-4 z-depth-1">
+                        <span>ARQUIVO</span>
+                        <input type="file" name="file">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                      </div>
+                    </div>
+
+                        <div style=" padding:10px; margin-top: 10px; width: 250px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" white col s4" >
+
+
+                                                        <input  id='carregar_btn' type="button" class='btn disabled red accent-4 z-depth-1' value="CARREGAR IMAGEM" onclick="this.form.submit();" /></a>
+            </div>
+
+
+                                                <div style=" padding:10px; margin-top: 10px; width: 250px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" white col s4" >
+
+
+                                                        <input   type="button" class='btn red accent-4 z-depth-1' value="SEM IMAGEM" onclick="this.form.submit();" /></a>
+            </div>
+
+  </form>
+        </div>
+
+        <span style="padding: 10px;margin: 10px; margin-bottom: 1px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" green white-text col s6 fluid-text center"> DESCRIÇÃO DA TROCA</span>
+
+        <span style="padding: 15px;margin: 10px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" white col s6 fluid-text"> Essa é uma descricao do produto nao sei o que mais dizer. Mais isso
+
+
+                                                                                deveria ocupar um enorme espaco e mostrar varias coisas dentro desse campo.
+                                                                                    Essa é uma descricao do produto nao sei o que mais dizer. Mais isso
+                                                                                deveria ocupar um enorme espaco e mostrar varias coisas dentro desse campo
+                                                                                    Essa é uma descricao do produto nao sei o que mais dizer. Mais isso
+                                                                                deveria ocupar um enorme espaco e mostrar varias coisas dentro desse campo
+                                                                                    Essa é uma descricao do produto nao sei o que mais dizer. Mais isso
+                                                                                deveria ocupar um enorme espaco e mostrar varias coisas dentro desse campo
+
+        </span>
+
+    </div>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+      <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-info" role="alert">{{ message }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+    <script>
+    document.getElementsByName('file')[0].addEventListener('change',prepareUpload,false);
+
+        function prepareUpload(event)
+        {
+            document.getElementById('carregar_btn').classList.remove('disabled');
+
+        }
+</script>
+
+
+{% endblock %}>
