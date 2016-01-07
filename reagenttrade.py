@@ -79,14 +79,15 @@ def index():
 
 
 @app.route('/anuncio_add', methods=['GET', 'POST'])
-def anuncio_add():
+def anuncio_add(dict_cadastro=None):
 
      if request.method == 'POST' and request.files['file']:
+        print 100
         file = request.files['file']
         filename = file.filename
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         flash("Foto selecionada")
-        return render_template('anuncio.html', figura_upload= 'static/produtos_figuras/' +filename)
+        return render_template('anuncio.html', figura_upload= 'static/produtos_figuras/'+filename)
 
      if request.method == 'GET' :
             flash("Nao utilizar foto...")
@@ -100,31 +101,34 @@ def cadastrar_troca():
     form = Registrar_nova_troca(request.form)
     for x in form:
         print x.data
-    # if request.method == 'POST' and request.files['file']:
-    #     file = request.files['file']
-    #     filename = file.filename
-    #     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    #     flash("Foto selecionada")
-    #     return render_template('nova_troca.html', form=form, figura_upload= 'static/produtos_figuras/' +filename)
+
 
 
     if request.method == 'POST' and form.validate():
 
 
 
-        troca = Troca(
-                      produto=form.produto.data,
-                      usuario_nome=current_user.username,
-                      quantidade=form.quantidade.data,
-                      foto_produto='x',
-                      data_anuncio='sem data ainda'
-                      )
+        # troca = Troca(
+        #               produto=form.produto.data,
+        #               usuario_nome=current_user.username,
+        #               quantidade=form.quantidade.data,
+        #               descricao=form.descricao,
+        #               foto_produto='x',
+        #               data_anuncio='sem data ainda'
+        #               )
+        #
+        # db.session.add(troca)
+        # db.session.commit()
 
-        db.session.add(troca)
-        db.session.commit()
+        flash({'produto':form.produto.data,
+                      'usuario_nome':current_user.username,
+                      'quantidade':form.quantidade.data,
+                      'descricao':form.descricao.data,
+                      'foto_produto':'x',
+                      'data_anuncio':'sem data ainda'})
 
-        flash('Troca cadastra')
-        return redirect(url_for('trocas'))
+        return redirect('anuncio_add')
+
     return render_template('nova_troca.html', form=form)
 
 

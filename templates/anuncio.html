@@ -3,9 +3,18 @@
 
 <div class="container">
     <div class="row">
+        {% with message = get_flashed_messages() %}
+        {% if message %}
+            {% for m in message[:1] %}
+
+
+
+
+
+
         <div style="padding: 10px;margin: 10px;margin-bottom: 0px;" class=" green blue-text col s12 fluid-text"></div>
 
-        <span style="padding: 20px;margin: 10px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" white blue-text col s12 fluid-text"><h5> Tubo falcon (plastico solúvel)</h5></span>
+        <span style="padding: 20px;margin: 10px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" white blue-text col s12 fluid-text"><h5> {{ m["produto"] }}</h5></span>
 
         <div style=" padding-top:15px; margin: 10px; height: 300px; width: 250px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" white col s4" >
 
@@ -42,34 +51,18 @@
 
   </form>
         </div>
+                <span style="padding: 15px;margin: 10px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" white col s2  center"> Quantidade: <h4 class="blue-text">{{ m["quantidade"] }}</h4>
+</span>
 
         <span style="padding: 10px;margin: 10px; margin-bottom: 1px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" green white-text col s6 fluid-text center"> DESCRIÇÃO DA TROCA</span>
 
-        <span style="padding: 15px;margin: 10px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" white col s6 fluid-text"> Essa é uma descricao do produto nao sei o que mais dizer. Mais isso
-
-
-                                                                                deveria ocupar um enorme espaco e mostrar varias coisas dentro desse campo.
-                                                                                    Essa é uma descricao do produto nao sei o que mais dizer. Mais isso
-                                                                                deveria ocupar um enorme espaco e mostrar varias coisas dentro desse campo
-                                                                                    Essa é uma descricao do produto nao sei o que mais dizer. Mais isso
-                                                                                deveria ocupar um enorme espaco e mostrar varias coisas dentro desse campo
-                                                                                    Essa é uma descricao do produto nao sei o que mais dizer. Mais isso
-                                                                                deveria ocupar um enorme espaco e mostrar varias coisas dentro desse campo
-
+        <span style="padding: 10px;margin: 5px; box-shadow: 0 2px 3px rgba(0,0,0,0.35);" class=" white col s6 "> {{ m["descricao"] }}
         </span>
 
+
+
     </div>
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      {% for message in messages %}
-      <div class="row">
-        <div class="col-md-12">
-          <div class="alert alert-info" role="alert">{{ message }}</div>
-        </div>
-      </div>
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
+
 </div>
     <script>
     document.getElementsByName('file')[0].addEventListener('change',prepareUpload,false);
@@ -81,5 +74,10 @@
         }
 </script>
 
+    {% endfor %}
+    {% endif %}
+  {% endwith %}
 
-{% endblock %}>
+
+{% endblock %}
+
